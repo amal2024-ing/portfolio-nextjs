@@ -15,19 +15,20 @@ export default function Portfolio() {
   const [active, setActive] = useState<string | null>(null);
 
   const tags = ["React JS", "Node Js", "NextJS"];
-  const roles = ['Développeuse Full-Stack', 'Développeuse Motivante'];
-
-  // Charger le thème depuis localStorage au montage
+  
+  // Charger le thème au montage
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
     if (savedTheme === 'light') {
       setIsDarkMode(false);
     }
   }, []);
 
-  // Sauvegarder le thème dans localStorage
+  // Sauvegarder le thème
   useEffect(() => {
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }
   }, [isDarkMode]);
 
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
+    const roles = ['Développeuse Full-Stack', 'Développeuse Motivante'];
     const currentText = roles[currentRole];
     const typingSpeed = isDeleting ? 50 : 100;
     
@@ -68,7 +70,7 @@ export default function Portfolio() {
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, currentRole, roles]);
+  }, [displayText, isDeleting, currentRole]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -85,7 +87,7 @@ export default function Portfolio() {
       year: "2025",
       description: "Plateforme permettant aux enseignants de générer automatiquement des examens à partir d'une banque de questions ou de nouvelles questions",
       icon: <Code className="w-6 h-6" />,
-      videoUrl: "/videos/exam-generation.mp4" // Mettre le nom de votre vidéo
+      videoUrl: "/videos/exam-generation.mp4"
     },
     {
       title: "Application Mobile ESSAT News",
@@ -229,7 +231,7 @@ export default function Portfolio() {
                 React JS, Next JS, Node JS, et Tailwind CSS.
               </p>
               <p className="mb-4">
-                Créez des applications Web modernes, complètes et centrées sur l'utilisateur avec des technologies de pointe
+                Créez des applications Web modernes, complètes et centrées sur l&apos;utilisateur avec des technologies de pointe
               </p>
               <div className={`flex flex-wrap gap-3 p-6 rounded-2xl ${isDarkMode ? 'bg-gradient-to-b from-[#0b0b2a] to-[#050517]' : 'bg-white/50 backdrop-blur-sm'}`}>
                 {tags.map((tag, index) => (
@@ -312,7 +314,7 @@ export default function Portfolio() {
                   Développeuse Web Full Stack avec une expertise en React.js, Next.js, Tailwind CSS, Node.js, Angular et Spring.
                 </p>
                 <p className={`text-lg leading-relaxed mt-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                  J'ai également de l'expérience dans l'hébergement cloud (Azure) et des connaissances en intelligence artificielle, machine learning et deep learning.
+                  J&apos;ai également de l&apos;expérience dans l&apos;hébergement cloud (Azure) et des connaissances en intelligence artificielle, machine learning et deep learning.
                 </p>
               </div>
               
@@ -431,7 +433,7 @@ export default function Portfolio() {
             Contactez-moi
           </h2>
           <p className={`text-xl mb-12 ${isDarkMode ? 'text-purple-100' : 'text-blue-100'}`}>
-            N'hésitez pas à me contacter pour discuter de projets ou d'opportunités
+            N&apos;hésitez pas à me contacter pour discuter de projets ou d&apos;opportunités
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             <a href="mailto:amaljridi66@gmail.com" className={`rounded-2xl p-8 hover:shadow-2xl transition-all hover:-translate-y-2 ${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-white'}`}>

@@ -88,7 +88,7 @@ export default function Portfolio() {
       year: "2025",
       description: "Plateforme permettant aux enseignants de générer automatiquement des examens à partir d'une banque de questions ou de nouvelles questions",
       icon: <Code className="w-6 h-6" />,
-      videoUrl: "/videos/exam-generation.mp4"
+      videoUrl: "https://youtu.be/4DM9uL_yBI4"
     },
     {
       title: "Application Mobile ESSAT News",

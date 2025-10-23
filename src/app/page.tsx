@@ -15,7 +15,17 @@ export default function Portfolio() {
   const [active, setActive] = useState<string | null>(null);
 
   const tags = ["React JS", "Node Js", "NextJS"];
-  
+  export default function Head() {
+  return (
+    <>
+      <title>Jridi Amal - Portfolio</title>
+      <meta name="description" content="Portfolio de Jridi Amal, développeuse Full-Stack" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" href="/favicon.ico" />
+    </>
+  );
+}
+
   // Charger le thème au montage
   useEffect(() => {
     const savedTheme = typeof window !== 'undefined' ? window.localStorage.getItem('theme') : null;
